@@ -6,7 +6,7 @@ const App = () => {
     return (
         <AppProvider>
             <div className='container'>
-                {/* Add the code here to add the components          */}
+                Ready for capstone project
             </div>
         </AppProvider>
     );
