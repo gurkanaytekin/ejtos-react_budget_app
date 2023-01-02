@@ -67,14 +67,25 @@ export const AppReducer = (state, action) => {
         case 'CHG_CURRENCY':
             action.type = "DONE";
             state.currency = action.payload;
+            const currentCurrencyName = findCurrencyName(state.currency)
+            state.currencyName = currentCurrencyName
             return {
-                ...state
+                ...state,
             }
 
         default:
             return state;
     }
 };
+
+const findCurrencyName = (currencySymbol) => currencyList.filter((item) => item.currency === currencySymbol)[0].currencyName
+
+const currencyList = [
+    {currency: '£', currencyName: 'Pound'},
+    {currency: '$', currencyName: 'Dollar'},
+    {currency: '€', currencyName: 'Euro'},
+    {currency: '₹', currencyName: 'Rupee'}
+]
 
 // 1. Sets the initial state when the app loads
 const initialState = {
@@ -86,7 +97,9 @@ const initialState = {
         { id: "Human Resource", name: 'Human Resource', cost: 40 },
         { id: "IT", name: 'IT', cost: 500 },
     ],
-    currency: '£'
+    currency: '£',
+    currencyName: findCurrencyName('£'),
+    currencyList
 };
 
 // 2. Creates the context this is the thing our components import and use to get the state
@@ -113,7 +126,9 @@ export const AppProvider = (props) => {
                 budget: state.budget,
                 remaining: remaining,
                 dispatch,
-                currency: state.currency
+                currency: state.currency,
+                currencyName: state.currencyName,
+                currencyList: state.currencyList
             }}
         >
             {props.children}
