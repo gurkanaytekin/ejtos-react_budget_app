@@ -14,7 +14,7 @@ const Currency = () => {
 
     return (
         <div className="dropdown">
-            <button>Currency {currency} {currencyName} <img src={Arrow} className='expenseList-img' alt="" /></button>
+            <button>Currency {currency} {currencyName} <img src={Arrow} className='currencyList-img' alt="" /></button>
             <div className="dropdown-options">
                 {
                     currencyList.map((item) => (
