@@ -92,9 +92,6 @@
   background-color: rgba(147,228,153,255);
 }
 
-.dropdown > button:hover{
-  background-color:#ddd;
-}
 
 @keyframes App-logo-spin {
   from {
